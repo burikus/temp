@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<PreserveCompilationReferences>true</PreserveCompilationReferences>
+		<PreserveCompilationContext>true</PreserveCompilationContext>
+		<OutputType>Library</OutputType>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Migrations\**" />
+	  <Content Remove="Migrations\**" />
+	  <EmbeddedResource Remove="Migrations\**" />
+	  <None Remove="Migrations\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Domain\Domain.csproj" />
+	  <ProjectReference Include="..\ServiceConfiguration\ServiceConfiguration.csproj" />
+	  <ProjectReference Include="..\Stamp.Domain\Stamp.Domain.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="obj\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="MimeTypesMap" Version="1.0.9" />
+	  <PackageReference Include="SixLabors.Fonts" Version="2.1.3" />
+	  <PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
+	  <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="2.1.7" />
+	</ItemGroup>
+
+</Project>

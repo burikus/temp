@@ -1,0 +1,33 @@
+﻿using Domain.Enums;
+
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+
+using Stamp.Domain.DataAccess.Entities;
+
+namespace Stamp.Core.DataAccess.EntityFramework.Configurations
+{
+    public class WatermarkMap : IEntityTypeConfiguration<Watermark>
+    {
+        public void Configure(EntityTypeBuilder<Watermark> builder)
+        {
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id)
+                .ValueGeneratedOnAdd();
+
+            builder.Property(x => x.Code)
+                .HasConversion(new EnumToStringConverter<WatermarkCode>())
+                .HasMaxLength(32)
+                .IsRequired();
+            builder.Property(x => x.ImageFile);
+            builder.Property(x => x.Description)
+                .IsRequired();
+
+            builder
+                .HasMany(r => r.Stamps)
+                .WithOne(r => r.Watermark)
+                .HasForeignKey(x => x.WatermarkId);
+        }
+    }
+}

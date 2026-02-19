@@ -1,0 +1,209 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "http://host.docker.internal:5001/api",
+    "RequestIdKey": "OcelotRequestId"
+  },
+  "Routes": [
+    //{
+    //  "UpstreamPathTemplate": "/api/masterworks",
+    //  "DownstreamPathTemplate": "/api/masterworks",
+    //  "DownstreamScheme": "http",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "ezarts",
+    //      "Port": 5011
+    //    }
+    //  ]
+    //},
+    //{
+    //  "UpstreamPathTemplate": "/api/masterworks/{everything}",
+    //  "DownstreamPathTemplate": "/api/masterworks/{everything}",
+    //  "DownstreamScheme": "http",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "ezarts",
+    //      "Port": 5011
+    //    }
+    //  ]
+    //},
+    //{
+    //  "UpstreamScheme": "http",
+    //  "UpstreamPathTemplate": "/api/menu",
+    //  "DownstreamScheme": "http",
+    //  "DownstreamPathTemplate": "/api/menu",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "ezarts",
+    //      "Port": 5011
+    //    }
+    //  ]
+    //},
+    //{
+    //  "UpstreamPathTemplate": "/api/settings/{everything}",
+    //  "DownstreamPathTemplate": "/api/settings/{everything}",
+    //  "DownstreamScheme": "http",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "ezarts",
+    //      "Port": 5011
+    //    }
+    //  ]
+    //},
+    //{
+    //  "DownstreamPathTemplate": "/api/newsletter/create",
+    //  "UpstreamPathTemplate": "/api/newsletter/create",
+    //  "DownstreamHostAndScheme": "http",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "ezarts",
+    //      "Port": 5011
+    //    }
+    //  ]
+    //},
+
+    {
+      "UpstreamPathTemplate": "/api/login",
+      "DownstreamPathTemplate": "/api/login",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "slimidentity",
+          "Port": 5010
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/logout",
+      "DownstreamPathTemplate": "/api/logout",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "slimidentity",
+          "Port": 5010
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/register",
+      "DownstreamPathTemplate": "/api/register",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "slimidentity",
+          "Port": 5010
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/restore",
+      "DownstreamPathTemplate": "/api/restore",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "slimidentity",
+          "Port": 5010
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/users",
+      "DownstreamPathTemplate": "/api/users",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "slimidentity",
+          "Port": 5010
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/user",
+      "DownstreamPathTemplate": "/api/user",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "slimidentity",
+          "Port": 5010
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/user/{everything}",
+      "DownstreamPathTemplate": "/api/user/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "slimidentity",
+          "Port": 5010
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/feedback",
+      "DownstreamPathTemplate": "/api/feedback",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "slimidentity",
+          "Port": 5010
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/mydetails",
+      "DownstreamPathTemplate": "/api/mydetails",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "slimidentity",
+          "Port": 5010
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/newsletter",
+      "UpstreamPathTemplate": "/api/newsletter",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "slimidentity",
+          "Port": 5010
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/subscribers",
+      "UpstreamPathTemplate": "/api/subscribers",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "slimidentity",
+          "Port": 5010
+        }
+      ]
+    }
+  ]
+
+  //"SwaggerEndPoints": [
+  //  {
+  //    "Key": "common",
+  //    "Config": [
+  //      {
+  //        "Name": "Common_API",
+  //        "Version": "v1",
+  //        "Url": "http://localhost:5011/swagger/v1/swagger.json"
+  //      }
+  //    ]
+  //  },
+  //  {
+  //    "Key": "identity",
+  //    "Config": [
+  //      {
+  //        "Name": "Identity_API",
+  //        "Version": "v1",
+  //        "Url": "http://localhost:5010/swagger/v1/swagger.json"
+  //      }
+  //    ]
+  //  }
+  //]
+}

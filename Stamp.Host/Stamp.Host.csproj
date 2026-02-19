@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileContext>.</DockerfileContext>
+		<EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
+		<PreserveCompilationReferences>true</PreserveCompilationReferences>
+		<PreserveCompilationContext>true</PreserveCompilationContext>
+		<VersionPrefix>1.02.1</VersionPrefix>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Migrations\Scripts\M202512011300_InitialFunctions_Down.sql" />
+	  <EmbeddedResource Include="Migrations\Scripts\M202512011300_InitialFunctions_Up.sql" />
+	  <EmbeddedResource Include="Migrations\Scripts\M202512011515_AddLockingSchema_Down.sql" />
+	  <EmbeddedResource Include="Migrations\Scripts\M202512011515_AddLockingSchema_Up.sql" />		
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Quartz.AspNetCore" Version="3.15.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Domain\Domain.csproj" />
+		<ProjectReference Include="..\Infrastructure.Locking\Infrastructure.Locking.csproj" />
+		<ProjectReference Include="..\ServiceConfiguration\ServiceConfiguration.csproj" />
+		<ProjectReference Include="..\Stamp.Core\Stamp.Core.csproj" />
+	</ItemGroup>
+
+</Project>
