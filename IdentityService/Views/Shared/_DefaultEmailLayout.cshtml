@@ -1,0 +1,24 @@
+
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+    <div style="font-family: Calibri; font-size: 16pt; display: inline; border: 0; vertical-align: middle; ">
+        @* <img src="@Model["BaseUri"]/assets/images/mail/logo.png" width="130" style="height:auto;display:inline;border:0; vertical-align: middle;" />
+        *@    @Model["Title"]
+        <br />
+    </div>
+    
+</head>
+
+<body style="margin:0;padding:0;">
+    <br />
+    @RenderBody()
+    <br />
+</body>
+
+<footer>
+    
+    <p>This message is for the designated recipient only and may contain privileged, proprietary, or otherwise private information. If you have received it in error, please notify the sender immediately and delete the original. Any other use of the email by you is prohibited.</p>
+</footer>
+</html>

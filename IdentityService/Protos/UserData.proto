@@ -1,0 +1,34 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "IdentityService.Protos";
+
+package UserData;
+
+service UserDataService {
+	rpc GetUserInfoByUid(UserByUidRequest) returns (UsersResponse);
+	//rpc GetUserRolesByUid(UserRolesByUidRequest) returns (UserRolesByUidResponse);
+}
+
+message UserByUidRequest {
+	string Uid = 1;
+	bool isAdmin = 2;
+}
+
+message UsersResponse {
+	repeated UserResponse Items = 1;
+}
+
+message UserResponse {
+	string Uid = 1;
+	string Name = 2;
+	string FamilyName = 3;
+	string Email = 4;	
+}
+
+//
+//message UserRolesByUidRequest{
+//	string UserIdentifier = 1;
+//}
+//message UserRolesByUidResponse{
+//	repeated string Roles = 1;
+//}

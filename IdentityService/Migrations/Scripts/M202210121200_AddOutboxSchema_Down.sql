@@ -1,0 +1,1 @@
+DROP SCHEMA IF EXISTS svc_outbox CASCADE;

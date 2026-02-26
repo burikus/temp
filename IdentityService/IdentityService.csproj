@@ -1,0 +1,97 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileContext>.</DockerfileContext>
+		<EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
+		<PreserveCompilationReferences>true</PreserveCompilationReferences>
+		<PreserveCompilationContext>true</PreserveCompilationContext>
+		<VersionPrefix>1.02.1</VersionPrefix>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Content Remove="Templates\AskMeEmail.cshtml" />
+		<Content Remove="Templates\ConfirmAccount.cshtml" />
+		<Content Remove="Templates\PasswordRestore.cshtml" />
+		<Content Remove="Templates\_DefaultEmailLayout.cshtml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="FluentMigrator" Version="7.1.0" />
+		<PackageReference Include="Grpc.Net.ClientFactory" Version="2.71.0" />
+		<PackageReference Include="Grpc.Tools" Version="2.76.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="8.0.22" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.22" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.11" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.10">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="10.0.0" />
+		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.15.0" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
+		<PackageReference Include="Polly.Core" Version="8.6.5" />
+		<PackageReference Include="Quartz.Extensions.Hosting" Version="3.15.1" />
+		<PackageReference Include="Rebus" Version="8.9.0" />
+		<PackageReference Include="Rebus.RabbitMq" Version="8.9.0" />
+		<PackageReference Include="Rebus.Serilog" Version="8.1.0" />
+		<PackageReference Include="Rebus.ServiceProvider" Version="10.7.0" />
+		<PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.15.0" />
+		<PackageReference Include="System.Resources.Extensions" Version="10.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Domain\Domain.csproj" />
+		<ProjectReference Include="..\IdentityService.Domain\IdentityService.Domain.csproj" />
+		<ProjectReference Include="..\IdentityService.Messaging\IdentityService.Messaging.csproj" />
+		<ProjectReference Include="..\Infrastructure.Emails\Infrastructure.Emails.csproj" />
+		<ProjectReference Include="..\Infrastructure.Locking\Infrastructure.Locking.csproj" />
+		<ProjectReference Include="..\Infrastructure.Net.Http\Infrastructure.Net.Http.csproj" />
+		<ProjectReference Include="..\ServiceConfiguration\ServiceConfiguration.csproj" />
+	    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="Migrations\Scripts\M202201011300_InitialFunctions_Down.sql" />
+		<None Remove="Migrations\Scripts\M202201011300_InitialFunctions_Up.sql" />
+		<None Remove="Migrations\Scripts\M202208251500_AddMailboxSchema_Down.sql" />
+		<None Remove="Migrations\Scripts\M202208251500_AddMailboxSchema_Up.sql" />
+		<None Remove="Migrations\Scripts\M202209231515_AddLockingSchema_Down.sql" />
+		<None Remove="Migrations\Scripts\M202209231515_AddLockingSchema_Up.sql" />
+		<None Remove="Migrations\Scripts\M202210121200_AddOutboxSchema_Down.sql" />
+		<None Remove="Migrations\Scripts\M202210121200_AddOutboxSchema_Up.sql" />
+		<None Remove="Protos\UserData.proto" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Migrations\Scripts\M202201011300_InitialFunctions_Down.sql" />
+		<EmbeddedResource Include="Migrations\Scripts\M202201011300_InitialFunctions_Up.sql" />
+		<EmbeddedResource Include="Migrations\Scripts\M202208251500_AddMailboxSchema_Down.sql" />
+		<EmbeddedResource Include="Migrations\Scripts\M202208251500_AddMailboxSchema_Up.sql" />
+		<EmbeddedResource Include="Migrations\Scripts\M202209231515_AddLockingSchema_Down.sql" />
+		<EmbeddedResource Include="Migrations\Scripts\M202209231515_AddLockingSchema_Up.sql" />
+		<EmbeddedResource Include="Migrations\Scripts\M202210121200_AddOutboxSchema_Down.sql" />
+		<EmbeddedResource Include="Migrations\Scripts\M202210121200_AddOutboxSchema_Up.sql" />
+		<EmbeddedResource Include="Templates\ConfirmAccount.cshtml" />
+		<EmbeddedResource Include="Templates\PasswordRestore.cshtml" />
+		<EmbeddedResource Include="Templates\AskMeEmail.cshtml" />
+		<EmbeddedResource Include="Views\Shared\_DefaultEmailLayout.cshtml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Protobuf Include="Protos\UserData.proto" GrpcServices="Server" />
+	</ItemGroup>
+
+</Project>

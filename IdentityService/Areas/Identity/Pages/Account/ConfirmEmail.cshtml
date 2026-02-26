@@ -1,0 +1,9 @@
+﻿@page
+@using IdentityService.Areas.Identity.Pages.Account
+@model ConfirmEmailModel
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Подтверждение электронного адреса";
+}
+    <h3 class="mdc-typography--subtitle2 mdc-theme--error" style="text-align: center; margin-top: 40vh; font-style: italic; color: blue">
+    @Model.StatusMessage</h3>
