@@ -5,7 +5,7 @@ namespace IdentityService.Domain.Commands
 {
     public record UpdateUserCommand : ICommand<UpdateCommandResult>
 	{
-		public Guid Uid { get; init; }
+		public Guid Id { get; init; }
 		public string? Name { get; init; }
 		public string? FamilyName { get; init; }
 		public string? Password { get; init; }

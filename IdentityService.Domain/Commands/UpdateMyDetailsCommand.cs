@@ -5,7 +5,7 @@ namespace IdentityService.Domain.Commands
 {
     public record UpdateMyDetailsCommand : ICommand<BaseCommandResult>
     {
-        public Guid Uid { get; init; }
+        public Guid Id { get; init; }
         public string Text { get; init; }
         public string Font { get; init; }
         public string FontSize { get; init; }

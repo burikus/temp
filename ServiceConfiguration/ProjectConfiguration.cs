@@ -20,6 +20,7 @@ using ServiceConfiguration.Middleware;
 using ServiceConfiguration.Options.Identity;
 using ServiceConfiguration.Options.JsonConverters;
 
+
 using FluentMigrator.Runner;
 
 using FluentValidation;
@@ -42,8 +43,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 
 using Serilog;
+using Microsoft.OpenApi;
 using Microsoft.OpenApi.Models;
-
 namespace ServiceConfiguration
 {
     public sealed class ProjectConfiguration
@@ -94,8 +95,6 @@ namespace ServiceConfiguration
                 .AddClasses(filter => filter.AssignableTo(typeof(ICommandHandler<,>)))
                 .AsImplementedInterfaces()
                 .WithTransientLifetime());
-
-            collection.AddMvc();
 
             collection.AddProblemDetails(setup =>
             {
@@ -356,7 +355,7 @@ namespace ServiceConfiguration
             //builder.UseAuthentication();
             //builder.UseAuthorization();
 
-            //builder.UseStaticFiles();
+            ////builder.UseStaticFiles();
             ////builder.UseCookiePolicy();
 
             //builder.UseEndpoints(routeBuilder =>

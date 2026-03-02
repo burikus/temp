@@ -51,8 +51,8 @@ namespace IdentityService
                 _configuration.GetSection("DataProtectionTokenProviderOptions"));
 
             _projectConfiguration.AddServices<Startup, IdentityServiceDomainDescriptor>(services);
-            _projectConfiguration.AddDbContext<IdentityContext>(services, _environment, "StampIdentity", "StampIdentity");
-            _projectConfiguration.AddMigration<IdentityContext>(services, _environment, "StampIdentity", "StampIdentity");
+            _projectConfiguration.AddDbContext<IdentityContext>(services, _environment, "SlimIdentity", "SlimIdentity");
+            _projectConfiguration.AddMigration<IdentityContext>(services, _environment, "SlimIdentity", "SlimIdentity");
 
             IocBootstrapper.RegisterServices(_configuration, services, _projectConfiguration.ServiceAddresses, _tokenOptions, /*_scheduleOptions,*/ _environment, _rabbit);
 

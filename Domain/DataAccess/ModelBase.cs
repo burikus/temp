@@ -2,6 +2,6 @@
 {
     public abstract record ModelBase
     {
-        public Guid Uid { get; init; }
+        public Guid Id { get; init; }
     }
 }

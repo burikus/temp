@@ -13,7 +13,7 @@ namespace IdentityService.Automapping
         public UserProfile()
         {
             CreateMap<User, UserDetailsDto>()
-                .ForMember(d => d.Uid, o => o.MapFrom(s => s.Id))
+                .ForMember(d => d.Id, o => o.MapFrom(s => s.Id))
                 .ForMember(d => d.Name, o => o.MapFrom(s => s.UserName))
                 .ForMember(d => d.Email, o => o.MapFrom(s => s.Email))
                 .ForMember(d => d.NormalizedEmail, o => o.MapFrom(s => s.NormalizedEmail))
@@ -41,7 +41,7 @@ namespace IdentityService.Automapping
                 .ForMember(d => d.Email, o => o.MapFrom(s => s.Email));
 
             CreateMap<UserDetailsDto, UserInfoModel>()
-                .ForMember(d => d.Uid, o => o.MapFrom(s => s.Uid))
+                .ForMember(d => d.Id, o => o.MapFrom(s => s.Id))
                 .ForMember(d => d.Name, o => o.MapFrom(s => s.Name))
                 .ForMember(d => d.FamilyName, o => o.MapFrom(s => s.FamilyName))
                 .ForMember(d => d.Email, o => o.MapFrom(s => s.Email))

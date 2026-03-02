@@ -5,7 +5,7 @@ namespace IdentityService.Models
     public record NewsLetterUserModel
     {
         [Required]
-        public Guid Uid { get; init; }
+        public Guid Id { get; init; }
         [Required]
         public string NewsletterText { get; init; }
         [Required]

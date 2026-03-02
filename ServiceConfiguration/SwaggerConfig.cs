@@ -10,8 +10,8 @@
         public SwaggerConfig(string serviceName)
         {
             Title = $"{serviceName}_API";
-            Version = "v1";
-            Url = "/swagger/v1/swagger.json";
+            Version = "v2";
+            Url = "/swagger/v2/swagger.json";
         }
     }
 }

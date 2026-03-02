@@ -76,7 +76,7 @@ namespace IdentityService.Jobs
                                 {
                                     Entity = new UserIdentity
                                     {
-                                        Uid = uid,
+                                        Id = uid,
                                         Email = email
                                     }
                                 }

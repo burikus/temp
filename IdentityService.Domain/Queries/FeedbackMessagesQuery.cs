@@ -7,6 +7,6 @@ namespace IdentityService.Domain.Queries
     public record FeedbackMessagesQuery : IQuery<IEnumerable<FeedbackMessageDto>>
     {
         public bool IsAdmin { get; init; }
-        public Guid? UserUid { get; init; } = null;
+        public Guid? UserId { get; init; } = null;
     }
 }

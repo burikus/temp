@@ -10,7 +10,7 @@ namespace IdentityService.Migrations
             Insert.IntoTable("MyDetails")
                 .Row(new
                 {
-                    Uid = "dda59251-091f-4385-1111-320d49298267",
+                    Id = "dda59251-091f-4385-1111-320d49298267",
                     Text = string.Empty,
                     Font = "Arbor",
                     FontSize = "20px",
@@ -21,7 +21,7 @@ namespace IdentityService.Migrations
                 })
                 .Row(new
                 {
-                    Uid = "eea59251-091f-4385-1111-320d49298267",
+                    Id = "eea59251-091f-4385-1111-320d49298267",
                     Text = string.Empty,
                     Font = "Arbor",
                     FontSize = "20px",

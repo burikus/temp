@@ -40,7 +40,7 @@ namespace IdentityService.Domain.Messaging
                 var dbParams = new NpgsqlParameter[] {
                     new  NpgsqlParameter()
                     {
-                        ParameterName = "uid",
+                        ParameterName = "id",
                         DbType = DbType.Guid,
                         Value = Guid.NewGuid()
                     },
@@ -53,7 +53,7 @@ namespace IdentityService.Domain.Messaging
                 };
 
                 var commandText =
-                    $@"INSERT INTO svc_outbox.""Messages"" (""Uid"", ""Message"") VALUES (@uid, @message)";
+                    $@"INSERT INTO svc_outbox.""Messages"" (""Id"", ""Message"") VALUES (@id, @message)";
 
                 await _context.Database.ExecuteSqlRawAsync(commandText, dbParams);
             }

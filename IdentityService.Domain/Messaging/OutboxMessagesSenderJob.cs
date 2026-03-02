@@ -80,8 +80,8 @@ namespace IdentityService.Domain.Messaging
                 command.CommandText =
                     $@"
 						DELETE FROM svc_outbox.""Messages""
-						WHERE ""Uid"" = any(array(SELECT ""Uid"" FROM svc_outbox.""Messages"" ORDER BY ""Created"" ASC LIMIT 50))
-						RETURNING ""Uid"", ""Message"", ""Created"";
+						WHERE ""Id"" = any(array(SELECT ""Id"" FROM svc_outbox.""Messages"" ORDER BY ""Created"" ASC LIMIT 50))
+						RETURNING ""Id"", ""Message"", ""Created"";
                     ";
 
                 using (var reader = await command.ExecuteReaderAsync().ConfigureAwait(false))

@@ -18,7 +18,7 @@ namespace IdentityService.Automapping
                 .ReverseMap();
 
             CreateMap<MyDetailsDto, MyDetailsModel>()
-                .ForMember(d => d.Uid, o => o.MapFrom(s => s.Uid))
+                .ForMember(d => d.Id, o => o.MapFrom(s => s.Id))
                 .ForMember(d => d.AboutmeText, o => o.MapFrom(s => s.Text))
                 .ForMember(d => d.AboutmeFont, o => o.MapFrom(s => s.Font))
                 .ForMember(d => d.AboutmeFontSize, o => o.MapFrom(s => s.FontSize))
@@ -27,7 +27,7 @@ namespace IdentityService.Automapping
                 .ForMember(d => d.AboutmeAlign, o => o.MapFrom(s => s.Align));
 
             CreateMap<MyDetailsDto, NewsLetterUserModel>()
-                .ForMember(d => d.Uid, o => o.MapFrom(s => s.Uid))
+                .ForMember(d => d.Id, o => o.MapFrom(s => s.Id))
                 .ForMember(d => d.NewsletterText, o => o.MapFrom(s => s.Text))
                 .ForMember(d => d.NewsletterFont, o => o.MapFrom(s => s.Font))
                 .ForMember(d => d.NewsletterFontSize, o => o.MapFrom(s => s.FontSize))

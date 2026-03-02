@@ -46,7 +46,7 @@ namespace IdentityService.Areas.Identity.Pages.Account
             if (code == null)
                 return ForbidEmailConfirmation("Для подтверждения регистрации не хватает кода подтверждения.");
             if (uid == null)
-                return ForbidEmailConfirmation("Ошибка в ссылке. Обратитесь к администратору. contact@o-iva.ru");
+                return ForbidEmailConfirmation("Ошибка в ссылке. Обратитесь к администратору. contact@slim-logistics.ru");
 
             var user = await FindUserByIdAsync(uid).ConfigureAwait(false);
 
@@ -104,7 +104,7 @@ namespace IdentityService.Areas.Identity.Pages.Account
             else
             {
                 //var issueDescription = result.Errors.Select(it => it.Description).Aggregate((first, second) => $"{first} {second}");
-                StatusMessage = "Код подтверждения неправильный. Свяжитесь пожалуйста с администратором. \n\n contact@o-iva.ru" +
+                StatusMessage = "Код подтверждения неправильный. Свяжитесь пожалуйста с администратором. \n\n contact@slim-logistics.ru" +
                     "или попробуйте Зарегистрироваться заново.";
 
                 //_userEventLogger.LogInformation(new UserEventLoggerModel { Uid = user.Id, UserName = user.Name },

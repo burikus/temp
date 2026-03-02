@@ -22,7 +22,7 @@ namespace IdentityService.Services
 
         public override async Task<UsersResponse> GetUserInfoByUid(UserByUidRequest request, ServerCallContext context)
         {
-            var result = await _mediator.Send(new UserInfoQuery { Uid = Guid.Parse(request.Uid), IsUserAdmin = request.IsAdmin }).ConfigureAwait(false);
+            var result = await _mediator.Send(new UserInfoQuery { Id = Guid.Parse(request.Uid), IsUserAdmin = request.IsAdmin }).ConfigureAwait(false);
 
             return _mapper.Map<UsersResponse>(result.Value);
         }

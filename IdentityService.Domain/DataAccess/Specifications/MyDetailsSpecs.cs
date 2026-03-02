@@ -8,10 +8,10 @@ namespace IdentityService.Domain.DataAccess.Specifications
     {
         public class ByUid : Specification<MyDetail>
         {
-            public ByUid(Guid? uid)
+            public ByUid(Guid? id)
             {
-                if (uid.HasValue)
-                    Predicate = x => x.Id == uid;
+                if (id.HasValue)
+                    Predicate = x => x.Id == id;
             }
         }
 

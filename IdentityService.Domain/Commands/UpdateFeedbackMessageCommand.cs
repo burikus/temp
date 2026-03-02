@@ -6,7 +6,7 @@ namespace IdentityService.Domain.Commands
 {
     public record UpdateFeedbackMessageCommand : ICommand<UpdateFeedbackMessageCommandResult>
     {
-        public Guid Uid { get; init; }
+        public Guid Id { get; init; }
         public Guid UserUid { get; init; }
         public string Message { get; init; }
         public DateTime AskedDateTime { get; init; }

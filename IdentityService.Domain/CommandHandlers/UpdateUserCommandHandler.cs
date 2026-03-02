@@ -29,7 +29,7 @@ namespace IdentityService.Domain.CommandHandlers
 
         protected override async Task<UpdateCommandResult> ProcessCommandAsync(UpdateUserCommand command, CancellationToken cancellationToken)
         {
-            var user = await _userWriteOnlyRepository.GetSingle(new UserSpecs.ByUid(command.Uid))
+            var user = await _userWriteOnlyRepository.GetSingle(new UserSpecs.ByUid(command.Id))
                                 .ConfigureAwait(false);
 
             user.UserName = command.Name;
@@ -43,7 +43,7 @@ namespace IdentityService.Domain.CommandHandlers
             await _userWriteOnlyRepository.Update(user)
                     .ConfigureAwait(false);
 
-            return new UpdateCommandResult() { Uid = Guid.Parse(user.Id), IsSucceed = true };
+            return new UpdateCommandResult() { Id = Guid.Parse(user.Id), IsSucceed = true };
         }
 
         protected override Result<UpdateCommandResult> CreateResponse(UpdateCommandResult response)

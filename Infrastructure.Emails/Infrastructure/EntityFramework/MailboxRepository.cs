@@ -51,10 +51,10 @@ namespace Infrastructure.Emails
                 foreach (var email in currentEmails)
                 {
                     command.CommandText += $@"
-                        INSERT INTO svc_mailbox.""EMails"" (""Uid"", ""MessageData"") VALUES (@uid{number}, @message{number});
+                        INSERT INTO svc_mailbox.""EMails"" (""Id"", ""MessageData"") VALUES (@id{number}, @message{number});
                     ";
 
-                    command.Parameters.Add(new NpgsqlParameter("@uid" + number, Guid.NewGuid()));
+                    command.Parameters.Add(new NpgsqlParameter("@id" + number, Guid.NewGuid()));
                     command.Parameters.Add(new NpgsqlParameter("@message" + number, JsonSerializer.Serialize(email)));
 
                     number++;
@@ -74,7 +74,7 @@ namespace Infrastructure.Emails
 
             command.CommandText = $@"
                 SELECT
-                 ""Uid"",
+                 ""Id"",
                     ""MessageData"",
                  ""IsSent"",
                  ""AttemptsCount"",
@@ -94,7 +94,7 @@ namespace Infrastructure.Emails
             {
                 emails.Add(new EmailRecord
                 {
-                    Uid = result.GetGuid(0),
+                    Id = result.GetGuid(0),
                     MessageData = result.GetString(1),
                     IsSent = result.GetBoolean(2),
                     AttemptsCount = result.GetInt32(3),
@@ -120,7 +120,7 @@ namespace Infrastructure.Emails
                     ""LastAttempt"" = NOW(),
                     ""LastAttemptError"" = null,
                     ""AttemptsCount"" = ""AttemptsCount"" + 1
-                WHERE ""Uid"" = ANY (@ids)
+                WHERE ""Id"" = ANY (@ids)
             ";
             command.CommandType = CommandType.Text;
             command.Parameters.Add(new NpgsqlParameter("@ids", uids));
@@ -150,15 +150,15 @@ namespace Infrastructure.Emails
 
                 foreach (var error in currentErrors)
                 {
-                    var uid = error;
-                    var errorMessage = errorsDict[uid];
+                    var id = error;
+                    var errorMessage = errorsDict[id];
 
                     command.CommandText += $@"
 				        UPDATE svc_mailbox.""EMails""
                         SET ""IsSent"" = false, ""LastAttempt"" = NOW(), ""LastAttemptError"" = @msg{number}, ""AttemptsCount"" = ""AttemptsCount"" + 1
-                        WHERE ""Uid"" = @uid{number};
+                        WHERE ""Id"" = @id{number};
                     ";
-                    command.Parameters.Add(new NpgsqlParameter("@uid" + number, uid));
+                    command.Parameters.Add(new NpgsqlParameter("@id" + number, id));
                     command.Parameters.Add(new NpgsqlParameter("@msg" + number, errorMessage));
 
                     number++;

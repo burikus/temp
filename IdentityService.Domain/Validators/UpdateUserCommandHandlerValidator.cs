@@ -22,7 +22,7 @@ namespace IdentityService.Domain.Validators
         {
             _readonlyRepository = readonlyRepository ?? throw new ArgumentNullException(nameof(readonlyRepository));
 
-            RuleFor(x => x.Uid)
+            RuleFor(x => x.Id)
                  .MustAsync(DoesUserExist)
                  .WithMessage(UserValidationMessages.UserDoesNotExist);
             //TODO add RoleName if needed

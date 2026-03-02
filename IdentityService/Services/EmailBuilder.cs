@@ -55,7 +55,7 @@ namespace IdentityService.Services
             var message = new EmailMessage(_emailHostConfiguration.From, To, null, Cc, body: null, template, data)
             {
                 Subject = "Подтверждение регистрации на сайте.",
-                SenderName = "o-iva.ru"
+                SenderName = "slim-logistics.ru"
             };
 
             return message;
@@ -73,8 +73,8 @@ namespace IdentityService.Services
 
             var message = new EmailMessage(_emailHostConfiguration.From, To, null, Cc, body: null, template, data)
             {
-                Subject = "Текущий пароль сайта o-iva.RU",
-                SenderName = "o-iva.ru"
+                Subject = "Текущий пароль сайта slim-logistics.RU",
+                SenderName = "slim-logistics.ru"
             };
 
             return message;
@@ -94,7 +94,7 @@ namespace IdentityService.Services
             var message = new EmailMessage(_emailHostConfiguration.From, To, null, Cc, body: null, template, data)
             {
                 Subject = "Установка нового пароля.",
-                SenderName = "o-iva.ru"
+                SenderName = "slim-logistics.ru"
             };
 
             return message;

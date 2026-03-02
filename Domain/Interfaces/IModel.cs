@@ -2,6 +2,6 @@
 {
     public interface IModel
     {
-        public Guid Uid { get; init; }
+        public Guid Id { get; init; }
     }
 }

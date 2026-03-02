@@ -29,7 +29,7 @@ namespace IdentityService.Domain.CommandHandlers
 
         protected override async Task<UpdateCommandResult> ProcessCommandAsync(UpdateUserStatusCommand command, CancellationToken cancellationToken)
         {
-            var user = await _repository.GetSingle(new UserSpecs.ByUid(command.UserUid));
+            var user = await _repository.GetSingle(new UserSpecs.ByUid(command.UserId));
 
             if (user != null)
             {
@@ -39,14 +39,14 @@ namespace IdentityService.Domain.CommandHandlers
 
                 return new UpdateCommandResult
                 {
-                    Uid = Guid.Parse(user.Id),
+                    Id = Guid.Parse(user.Id),
                     IsSucceed = true
                 };
             }
 
             return new UpdateCommandResult
             {
-                Uid = Guid.Empty,
+                Id = Guid.Empty,
                 IsSucceed = false
             };
         }

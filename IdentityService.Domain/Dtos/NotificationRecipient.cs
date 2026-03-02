@@ -1,4 +1,4 @@
 ﻿namespace IdentityService.Domain.Dtos
 {
-    public record NotificationRecipient(Guid Uid, string Email);
+    public record NotificationRecipient(Guid Id, string Email);
 }

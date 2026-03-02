@@ -16,9 +16,9 @@ namespace IdentityService.Domain.DataAccess.Specifications
 
         public class ByUserUid : Specification<FeedbackMessage>
         {
-            public ByUserUid(Guid userUid)
+            public ByUserUid(Guid userId)
             {
-                Predicate = message => message.UserUid == userUid;
+                Predicate = message => message.UserId == userId;
             }
         }
     }

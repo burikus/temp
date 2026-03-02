@@ -5,7 +5,7 @@ namespace IdentityService.Models
     public record MyDetailsModel
     {
         [Required]
-        public Guid Uid { get; init; }
+        public Guid Id { get; init; }
         [Required]
         public string AboutmeText { get; init; }
         [Required]

@@ -2,7 +2,7 @@
 {
     public record UpdateCommandResult
     {
-        public Guid Uid { get; init; }
+        public Guid Id { get; init; }
         public bool IsSucceed { get; init; }
     }
 }

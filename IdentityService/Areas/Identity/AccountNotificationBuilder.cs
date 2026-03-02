@@ -57,13 +57,13 @@ namespace IdentityService.Areas.Identity
                 handler: null,
                 values: new
                 {
-                    uid = user.Uid,
+                    uid = user.Id,
                     code = encodedToken
                 },
                 scheme: _proxyOptions.Value.Scheme!,
                 host: HostString.FromUriComponent(_proxyOptions.Value.Host!),
                 pathBase: _proxyOptions.Value.PathBase ?? PathString.Empty
-            ) ?? $"https://o-iva.ru/Identity/Account/ConfirmEmail?userId={Uri.EscapeDataString(user.Uid.ToString())}&code={encodedToken}";
+            ) ?? $"https://slim-logistics.ru/Identity/Account/ConfirmEmail?userId={Uri.EscapeDataString(user.Id.ToString())}&code={encodedToken}";
 
             return _emailBuilder.BuildConfirmAccountEmailMessage(callbackUrl, new[] { user.Email });
         }

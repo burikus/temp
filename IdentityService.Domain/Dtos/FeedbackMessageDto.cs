@@ -2,7 +2,7 @@
 {
     public record FeedbackMessageDto
     {
-        public Guid Uid { get; init; }
+        public Guid Id { get; init; }
         public Guid UserUid { get; init; }
         public string UserFullName { get; init; }
         public string UserEmail { get; init; }

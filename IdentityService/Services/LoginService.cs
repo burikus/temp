@@ -42,7 +42,7 @@ namespace IdentityService.Services
 
                 if (model.Password.ObjectToString().Equals(user.PasswordHash))
                 {
-                    var jwt = _tokenProvider.Generate(new UserJwtModel { Uid = Guid.Parse(user.Id), RoleNames = roles });
+                    var jwt = _tokenProvider.Generate(new UserJwtModel { Id = Guid.Parse(user.Id), RoleNames = roles });
 
                     user.LastSuccessfulLogin = _dateTimeProvider.UtcNow;
                     await _signInManager.UserManager.UpdateAsync(user).ConfigureAwait(false);

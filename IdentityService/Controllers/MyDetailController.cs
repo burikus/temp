@@ -38,7 +38,7 @@ namespace IdentityService.Controllers
         {
             var command = new UpdateMyDetailsCommand()
             {
-                Uid = input.Uid,
+                Id = input.Id,
                 Text = input.AboutmeText,
                 Font = input.AboutmeFont,
                 FontSize = input.AboutmeFontSize,
@@ -76,7 +76,7 @@ namespace IdentityService.Controllers
         {
             var command = new UpdateMyDetailsCommand()
             {
-                Uid = input.Uid,
+                Id = input.Id,
                 Text = input.NewsletterText,
                 Font = input.NewsletterFont,
                 FontSize = input.NewsletterFontSize,

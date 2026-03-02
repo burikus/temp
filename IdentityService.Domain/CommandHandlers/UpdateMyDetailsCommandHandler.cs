@@ -24,7 +24,7 @@ namespace IdentityService.Domain.CommandHandlers
 
         protected override async Task<BaseCommandResult> ProcessCommandAsync(UpdateMyDetailsCommand command, CancellationToken cancellationToken)
         {
-            var detail = await _writeOnlyRepository.GetSingle(new MyDetailsSpecs.ByUid(command.Uid));
+            var detail = await _writeOnlyRepository.GetSingle(new MyDetailsSpecs.ByUid(command.Id));
 
             if (detail == null)
             {

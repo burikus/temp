@@ -29,12 +29,12 @@ namespace IdentityService.Domain.QueryHandlers
                 ? await _repository.GetAll(new UserSortingSpecs.ByName(),
                             new[] { new UserJoinStrategies.WithUserRoles()/*.ThenInclude(new UserJoinStrategies.WithRole())*/ }, request.IsUserAdmin)
                             .ConfigureAwait(false)
-                : await _repository.GetByFilter(new UserSpecs.ByUid(request.Uid))
+                : await _repository.GetByFilter(new UserSpecs.ByUid(request.Id))
                             .ConfigureAwait(false);
 
             if (request.IsUserAdmin)
             {
-                userInfo = userInfo.OrderBy(x => x.Id != request.Uid.ToString()).ToArray();
+                userInfo = userInfo.OrderBy(x => x.Id != request.Id.ToString()).ToArray();
             }
 
             return Result<UserDetailsDto[]>.Ok(Mapper.Map<UserDetailsDto[]>(userInfo));

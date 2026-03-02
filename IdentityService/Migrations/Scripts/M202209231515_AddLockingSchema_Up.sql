@@ -2,14 +2,14 @@
 
 CREATE TABLE IF NOT EXISTS svc_lock."Locks"
 (
-    "Uid" uuid NOT NULL,
+    "Id" uuid NOT NULL,
     "ResourceId" character varying(256),
 	"LockToken" uuid,
 	"LockStart" timestamp without time zone,
 	"LockEnd" timestamp without time zone,
 	CONSTRAINT "UNQ_Locks_LockToken" UNIQUE("LockToken"),
 	CONSTRAINT "UNQ_Locks_ResourceId" UNIQUE("ResourceId"),
-    CONSTRAINT "PK_Locks" PRIMARY KEY ("Uid")
+    CONSTRAINT "PK_Locks" PRIMARY KEY ("Id")
 );
 
 CREATE OR REPLACE FUNCTION svc_lock.TryAquireResourceLockToken(
@@ -18,40 +18,40 @@ CREATE OR REPLACE FUNCTION svc_lock.TryAquireResourceLockToken(
 	)
 	RETURNS uuid AS $$
 DECLARE
-	LockUid uuid;
-	LockTokenUid uuid;
+	LockId uuid;
+	LockTokenId uuid;
 	LockStart timestamp without time zone;
 	LockEnd timestamp without time zone;
 BEGIN
 	SELECT
-		"Uid",
+		"Id",
 		"LockToken",
 		"LockStart",
 		"LockEnd"
 	INTO
-		LockUid,
-		LockTokenUid,
+		LockId,
+		LockTokenId,
 		LockStart,
 		LockEnd
 	FROM svc_lock."Locks"
 	WHERE "ResourceId" = resourceId FOR UPDATE;
 	
 	-- check if resource lock is new
-	IF (LockUid IS NULL)
+	IF (LockId IS NULL)
 	THEN
-		LockUid := uuid_generate_v4();
-		LockTokenUid := uuid_generate_v4();
+		LockId := uuid_generate_v4();
+		LockTokenId := uuid_generate_v4();
 		LockStart := CURRENT_TIMESTAMP;
 		LockEnd := CURRENT_TIMESTAMP + make_interval(secs => lockSpanSeconds);
 		
 		INSERT INTO svc_lock."Locks" (
-			"Uid", "ResourceId", "LockToken", "LockStart", "LockEnd"
+			"Id", "ResourceId", "LockToken", "LockStart", "LockEnd"
 		)
 		VALUES (
-			LockUid, resourceId, LockTokenUid, LockStart, LockEnd
+			LockId, resourceId, LockTokenId, LockStart, LockEnd
 		);
 		
-		RETURN LockTokenUid;
+		RETURN LockTokenId;
 	END IF;
 	
 	IF (LockEnd IS NOT NULL AND CURRENT_TIMESTAMP < LockEnd)
@@ -59,37 +59,37 @@ BEGIN
 		RETURN NULL; -- previous lock is not expired
 	END IF;
 	
-	LockTokenUid := uuid_generate_v4();
+	LockTokenId := uuid_generate_v4();
 	LockStart := CURRENT_TIMESTAMP;
 	LockEnd := CURRENT_TIMESTAMP + make_interval(secs => lockSpanSeconds);
 	
 	UPDATE svc_lock."Locks"
 	SET
-		"LockToken" = LockTokenUid,
+		"LockToken" = LockTokenId,
 		"LockStart" = LockStart,
 		"LockEnd" = LockEnd
-	WHERE "Uid" = LockUid;
+	WHERE "Id" = LockId;
 	
-	RETURN LockTokenUid;
+	RETURN LockTokenId;
 END;
 $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION svc_lock.ReleaseResourceLockToken(
-	lockTokenUid uuid
+	lockTokenId uuid
 	)
 	RETURNS uuid AS $$
 DECLARE
-	LockUid uuid;
+	LockId uuid;
 BEGIN
 	SELECT
-		"Uid"
+		"Id"
 	INTO
-		LockUid
+		LockId
 	FROM svc_lock."Locks"
-	WHERE "LockToken" = lockTokenUid;
+	WHERE "LockToken" = lockTokenId;
 	
 	-- check if resource lock exists
-	IF (LockUid IS NULL)
+	IF (LockId IS NULL)
 	THEN
 		RETURN NULL;
 	END IF;
@@ -99,8 +99,8 @@ BEGIN
 		"LockToken" = NULL,
 		"LockStart" = NULL,
 		"LockEnd" = NULL
-	WHERE "Uid" = LockUid;
+	WHERE "Id" = LockId;
 	
-	RETURN lockTokenUid;
+	RETURN lockTokenId;
 END;
 $$ LANGUAGE plpgsql;

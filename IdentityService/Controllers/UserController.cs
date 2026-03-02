@@ -75,7 +75,7 @@ namespace IdentityService.Controllers
             {
                 var command = new UpdateUserCommand
                 {
-                    Uid = UserProvider.GetUserIdentifier(),
+                    Id = UserProvider.GetUserIdentifier(),
                     Password = model.Password,
                     Name = model.Name,
                     FamilyName = model.FamilyName,
@@ -106,7 +106,7 @@ namespace IdentityService.Controllers
             {
                 var command = new UserInfoQuery
                 {
-                    Uid = UserProvider.GetUserIdentifier(),
+                    Id = UserProvider.GetUserIdentifier(),
                     IsUserAdmin = UserProvider.IsAdmin()
                 };
 

@@ -34,7 +34,7 @@ namespace IdentityService.Domain.MessageHandlers.Users
                 await _mediator.Send(new UpdateUserStatusCommand
                 {
                     Status = UserStatus.InvitationExpired,
-                    UserUid = Guid.Parse(user.Id)
+                    UserId = Guid.Parse(user.Id)
                 }).ConfigureAwait(false);
             }
         }

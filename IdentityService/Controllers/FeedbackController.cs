@@ -55,7 +55,7 @@ namespace IdentityService.Controllers
                 var userId = UserProvider.GetUserIdentifier();
                 var command = new CreateFeedbackMessageCommand()
                 {
-                    UserUid = userId,
+                    UserId = userId,
                     Message = inputCommand.Message,
                     AskedDateTime = _dateTimeProvider.UtcNow
                 };
@@ -82,7 +82,7 @@ namespace IdentityService.Controllers
         {
             var command = new UserFeedbackMessagesQuery()
             {
-                UserUid = UserProvider.GetUserIdentifier(),
+                UserId = UserProvider.GetUserIdentifier(),
                 IsAdmin = UserProvider.IsAdmin()
             };
 

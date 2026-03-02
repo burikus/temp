@@ -54,7 +54,7 @@ namespace Infrastructure.Emails
 
                 var messageRecords = await _mailboxRepository.GetMessagesToSend(connection);
                 var emailMessages = messageRecords.ToDictionary(
-                    msgRecord => msgRecord.Uid,
+                    msgRecord => msgRecord.Id,
                     msgRecord => JsonSerializer.Deserialize<EmailMessage>(msgRecord.MessageData)
                 );
 

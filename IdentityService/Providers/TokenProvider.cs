@@ -57,7 +57,7 @@ namespace IdentityService.Providers
         {
             var claims = new List<Claim>(user.RoleNames.Count() + 2)
             {
-                new(Claims.Subject , user.Uid.ToString())
+                new(Claims.Subject , user.Id.ToString())
             };
 
             claims.AddRange(user.RoleNames.Select(role => new Claim(Claims.Role, role)));

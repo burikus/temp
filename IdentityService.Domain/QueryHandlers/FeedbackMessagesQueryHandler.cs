@@ -38,9 +38,9 @@ namespace IdentityService.Domain.QueryHandlers
                 ? new FilterSpecification.DefaultSpecification<FeedbackMessage>()
                 : new FeedbackMessagesSpecs.BySentDateTimeIsNull();
 
-            if (query.UserUid.HasValue && !query.IsAdmin)
+            if (query.UserId.HasValue && !query.IsAdmin)
             {
-                spec |= new FeedbackMessagesSpecs.ByUserUid(query.UserUid.Value);
+                spec |= new FeedbackMessagesSpecs.ByUserUid(query.UserId.Value);
             }
 
             return spec;

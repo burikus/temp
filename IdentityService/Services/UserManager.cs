@@ -68,7 +68,7 @@ namespace IdentityService.Services
                 {
                     Entity = new UserIdentity
                     {
-                        Uid = Guid.Parse(user.Id),
+                        Id = Guid.Parse(user.Id),
                         Email = user.Email
                     }
                 }
@@ -85,7 +85,7 @@ namespace IdentityService.Services
                 {
                     Entity = new UserIdentity
                     {
-                        Uid = Guid.Parse(user.Id),
+                        Id = Guid.Parse(user.Id),
                         Email = user.Email
                     }
                 }

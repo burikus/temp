@@ -1,4 +1,7 @@
-﻿using System.Net.Mime;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Mime;
 
 using Domain.Core;
 using Domain.Interfaces;
@@ -7,6 +10,7 @@ using FluentValidation.Results;
 
 using MediatR;
 
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ServiceConfiguration.Base
@@ -18,10 +22,6 @@ namespace ServiceConfiguration.Base
         protected readonly IMapper Mapper;
         protected readonly IMediator Mediator;
         protected readonly IUserProvider UserProvider;
-
-        protected WebApiControllerBase()
-        {
-        }
 
         protected WebApiControllerBase(IUserProvider userProvider)
         {

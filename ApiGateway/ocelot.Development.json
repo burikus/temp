@@ -3,94 +3,39 @@
     "BaseUrl": "http://localhost:5001"
   },
   "Routes": [
-    //{
-    //  "UpstreamPathTemplate": "/api/setting/{everything}",
-    //  "DownstreamPathTemplate": "/api/setting/{everything}",
-    //  "DownstreamScheme": "http",
-    //  "DownstreamHostAndPorts": [
-    //    {
-    //      "Host": "localhost",
-    //      "Port": 5011
-    //    }
-    //  ]
-    //},
-    //{
-    //  "UpstreamPathTemplate": "/api/setting-watermark/picture",
-    //  "DownstreamPathTemplate": "/api/setting-watermark/picture",
-    //  "DownstreamScheme": "http",
-    //  "DownstreamHostAndPorts": [
-    //    {
-    //      "Host": "localhost",
-    //      "Port": 5011
-    //    }
-    //  ]
-    //},
-    //{
-    //  "UpstreamPathTemplate": "/api/stamp-picture",
-    //  "DownstreamPathTemplate": "/api/stamp-picture",
-    //  "DownstreamScheme": "http",
-    //  "DownstreamHostAndPorts": [
-    //    {
-    //      "Host": "localhost",
-    //      "Port": 5011
-    //    }
-    //  ]
-    //},
-    //{
-    //  "UpstreamPathTemplate": "/api/stamp-picture/{everything}",
-    //  "DownstreamPathTemplate": "/api/stamp-picture/{everything}",
-    //  "DownstreamScheme": "http",
-    //  "DownstreamHostAndPorts": [
-    //    {
-    //      "Host": "localhost",
-    //      "Port": 5011
-    //    }
-    //  ]
-    //},
-    //{
-    //  "UpstreamPathTemplate": "/api/stamp-info",
-    //  "DownstreamPathTemplate": "/api/stamp-info",
-    //  "DownstreamScheme": "http",
-    //  "DownstreamHostAndPorts": [
-    //    {
-    //      "Host": "localhost",
-    //      "Port": 5011
-    //    }
-    //  ]
-    //},
-    //{
-    //  "UpstreamPathTemplate": "/api/menu",
-    //  "DownstreamPathTemplate": "/api/menu",
-    //  "DownstreamScheme": "http",
-    //  "DownstreamHostAndPorts": [
-    //    {
-    //      "Host": "localhost",
-    //      "Port": 5011
-    //    }
-    //  ]
-    //},
-    //{
-    //  "UpstreamPathTemplate": "/api/favourite",
-    //  "DownstreamPathTemplate": "/api/favourite",
-    //  "DownstreamScheme": "http",
-    //  "DownstreamHostAndPorts": [
-    //    {
-    //      "Host": "localhost",
-    //      "Port": 5011
-    //    }
-    //  ]
-    //},
-    //{
-    //  "UpstreamPathTemplate": "/api/favourite/{everything}",
-    //  "DownstreamPathTemplate": "/api/favourite/{everything}",
-    //  "DownstreamScheme": "http",
-    //  "DownstreamHostAndPorts": [
-    //    {
-    //      "Host": "localhost",
-    //      "Port": 5011
-    //    }
-    //  ]
-    //},
+    {
+      "UpstreamPathTemplate": "/api/setting/{everything}",
+      "DownstreamPathTemplate": "/api/setting/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5011
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/info",
+      "DownstreamPathTemplate": "/api/info",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5011
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/blog",
+      "DownstreamPathTemplate": "/api/blog",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5011
+        }
+      ]
+    },
 
     {
       "UpstreamPathTemplate": "/api/login",

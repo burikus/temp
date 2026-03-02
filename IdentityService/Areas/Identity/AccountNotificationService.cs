@@ -121,13 +121,13 @@ namespace IdentityService.Areas.Identity
 
         private async Task OnSendConfirmAccountEmailMessageAsync(NotificationRecipient user)
         {
-            _messageService.AddMessage(new UserVerificationRequestMessage { Entity = new UserIdentity { Uid = user.Uid, Email = user.Email } });
+            _messageService.AddMessage(new UserVerificationRequestMessage { Entity = new UserIdentity { Id = user.Id, Email = user.Email } });
             await _messageService.SaveMessagesToDb();
         }
 
         private async Task OnSendRestorePasswordMessageAsync(NotificationRecipient user)
         {
-            _messageService.AddMessage(new RestorePasswordRequestMessage { Entity = new UserIdentity { Uid = user.Uid, Email = user.Email } });
+            _messageService.AddMessage(new RestorePasswordRequestMessage { Entity = new UserIdentity { Id = user.Id, Email = user.Email } });
             await _messageService.SaveMessagesToDb();
         }
     }

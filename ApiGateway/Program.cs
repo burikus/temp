@@ -1,4 +1,3 @@
-using ApiGateway;
 using ApiGateway.Base;
 
 using Serilog;

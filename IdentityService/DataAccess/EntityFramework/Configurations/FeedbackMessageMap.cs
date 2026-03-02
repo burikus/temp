@@ -15,7 +15,7 @@ namespace IdentityService.DataAccess.EntityFramework.Configurations
                 .ValueGeneratedOnAdd()
                 .IsRequired();
 
-            builder.Property(x => x.UserUid)
+            builder.Property(x => x.UserId)
                 .IsRequired();
 
             builder.Property(x => x.AskedDateTime)

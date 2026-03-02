@@ -35,7 +35,7 @@ namespace IdentityService.Domain.QueryHandlers
         {
             FeedbackMessageDto[] messages = Array.Empty<FeedbackMessageDto>();
 
-            var messageGroups = (await _mediator.Send(new FeedbackMessagesQuery { IsAdmin = query.IsAdmin, UserUid = query.UserUid }).ConfigureAwait(false)).Value!
+            var messageGroups = (await _mediator.Send(new FeedbackMessagesQuery { IsAdmin = query.IsAdmin, UserId = query.UserId }).ConfigureAwait(false)).Value!
                                     .OrderByDescending(x => x.AskedDateTime)
                                     .GroupBy(x => x.UserUid).ToArray();
 
@@ -45,12 +45,12 @@ namespace IdentityService.Domain.QueryHandlers
                                             .GetByFilter(new UserSpecs.ByUids(messageGroups.Select(x => x.Key))));
 
                 messages = messageGroups.SelectMany(group => group)
-                            .Join(userDetailsGroups, messages => messages.UserUid, user => user.Uid, (message, user) =>
+                            .Join(userDetailsGroups, messages => messages.UserUid, user => user.Id, (message, user) =>
                             {
                                 return new FeedbackMessageDto
                                 {
-                                    Uid = message.Uid,
-                                    UserUid = user.Uid,
+                                    Id = message.Id,
+                                    UserUid = user.Id,
                                     UserFullName = user.FullName,
                                     UserEmail = user.Email,
                                     UserPhone = user.Phone,
